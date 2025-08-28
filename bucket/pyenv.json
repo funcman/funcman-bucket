@@ -1,0 +1,41 @@
+{
+    "version": "3.1.1f1",
+    "description": "Simple python version management tool for switching between multiple versions of Python.",
+    "homepage": "https://pyenv-win.github.io/pyenv-win/",
+    "license": "MIT",
+    "notes": "You can specify the PYTHON_BUILD_MIRROR_URL environment variable and run 'pyenv update' to speed up downloads.",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/funcman/pyenv-win/archive/v3.1.1f1.zip",
+            "hash": "d321d261c2b4de90493164e503c26aa8950cd4756637d17d2ff2227f5b90c166",
+            "extract_dir": "pyenv-win-3.1.1f1"
+        }
+    },
+    "pre_install": "if (!(Test-Path \"$persist_dir\\pyenv-win\\version\")) { New-Item \"$dir\\pyenv-win\\version\" | Out-Null }",
+    "env_add_path": [
+        "pyenv-win\\bin",
+        "pyenv-win\\shims"
+    ],
+    "env_set": {
+        "PYENV": "$dir\\pyenv-win",
+        "PYENV_ROOT": "$dir\\pyenv-win",
+        "PYENV_HOME": "$dir\\pyenv-win"
+    },
+    "persist": [
+        "pyenv-win\\version",
+        "pyenv-win\\shims",
+        "pyenv-win\\versions",
+        "pyenv-win\\install_cache"
+    ],
+    "checkver": {
+        "github": "https://github.com/pyenv-win/pyenv-win"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/pyenv-win/pyenv-win/archive/v$version.zip",
+                "extract_dir": "pyenv-win-$version"
+            }
+        }
+    }
+}
